@@ -34,6 +34,7 @@ class Solution {
 
     public void traceback(int[] nums, int len, int depth, List<List<Integer>> res, List<Integer> path, boolean[] used){
         if(depth == len){
+            // 注意这里
             res.add(new ArrayList<>(path));
             return;
         }
