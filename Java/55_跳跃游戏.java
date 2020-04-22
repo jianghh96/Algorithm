@@ -19,7 +19,7 @@ class Solution {
         if(nums.length == 0 || nums.length == 1) return true;
         // 初始化当前能到达最远的位置
         int max_dist = 0;
-        for(int i = 0; i < nums.length; i++){
+        for(int i = 0; i < nums.length-1; i++){
             // 如果当前位置能到达，并且当前位置+跳数>最远位置
             if(max_dist >= i && nums[i] + i > max_dist)
                 max_dist = nums[i] + i;
