@@ -57,3 +57,4 @@ class Solution {
         return Math.max(longestStreak, currentStreak);
     }
 }
+
