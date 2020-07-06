@@ -12,6 +12,8 @@
 
 // 解释: 数组可以分割成 [1, 5, 5] 和 [11].
 
+// 背包问题：https://blog.csdn.net/chanmufeng/article/details/82955730
+
 // 解题思路：https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/0-1-bei-bao-wen-ti-xiang-jie-zhen-dui-ben-ti-de-yo/
 
 class Solution {
