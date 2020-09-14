@@ -66,3 +66,36 @@ public class Solution {
         return null;
     }
 }
+
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA == null || headB == null) return null;
+        int lenA = 0, lenB = 0;
+        ListNode nodeA = headA, nodeB = headB;
+        while(headA != null){
+            lenA++;
+            headA = headA.next;
+        }
+        while(headB != null){
+            lenB++;
+            headB = headB.next;
+        }
+        if(lenB > lenA){
+            ListNode node = nodeA;
+            nodeA = nodeB;
+            nodeB = node;
+        }
+        for(int i = 0; i < Math.abs(lenA-lenB); i++){
+            nodeA = nodeA.next;
+        }
+        while(nodeA != null && nodeB != null){
+            if(nodeA == nodeB){
+                return nodeA;
+            }else{
+                nodeA = nodeA.next;
+                nodeB = nodeB.next;
+            }
+        }
+        return null;
+    }
+}
