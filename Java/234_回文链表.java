@@ -40,26 +40,22 @@ class Solution {
 
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        if (head == null) return true;
+        if (head == null || head.next == null) return true;
         // 找出前半段，反转后半段
         ListNode firstHalfEnd = endOfFirstHalf(head);
         ListNode secondHalfStart = reverseList(firstHalfEnd.next);
-
         // 前后半段比较
         ListNode p1 = head;
         ListNode p2 = secondHalfStart;
-        boolean result = true;
-        while (result && p2 != null) {
-            if (p1.val != p2.val) result = false;
+        while (p2 != null) {
+            if (p1.val != p2.val) return false;
             p1 = p1.next;
             p2 = p2.next;
         }        
-
         // 再反转后半段
         firstHalfEnd.next = reverseList(secondHalfStart);
-        return result;
+        return true;
     }
-
     // 反转链表
     private ListNode reverseList(ListNode head) {
         ListNode prev = null;
@@ -72,7 +68,6 @@ class Solution {
         }
         return prev;
     }
-
     private ListNode endOfFirstHalf(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
