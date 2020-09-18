@@ -1,1 +1,4 @@
-
+leetcode:
+242.有效的字母异位词 哈希映射
+409.最长回文串 哈希表 map.getOrDefault(,) map.keySet() map.containsKey()
+205.同构字符串 哈希表 相互映射
