@@ -30,3 +30,19 @@ class Solution {
         return left || right || mid;
     }
 }
+
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        // 注意边界条件
+        if(root == null || p == root || q == root) return root;
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if(left == null)
+            return right;
+        else if(right == null)
+            return left;
+        else
+            return root;
+    }
+}
