@@ -16,15 +16,16 @@
 
 class Solution {
     public boolean canJump(int[] nums) {
-        if(nums.length == 0 || nums.length == 1) return true;
-        // 初始化当前能到达最远的位置
+        if(nums == null || nums.length < 2) return true;
         int max_dist = 0;
+        int end = 0;
         for(int i = 0; i < nums.length-1; i++){
-            // 如果当前位置能到达，并且当前位置+跳数>最远位置
-            if(max_dist >= i && nums[i] + i > max_dist)
-                max_dist = nums[i] + i;
-                if(max_dist >= nums.length-1)
+            max_dist = Math.max(max_dist, i+nums[i]);
+            if(i == end){
+                end = max_dist;
+                if(end >= nums.length-1)
                     return true;
+            }
         }
         return false;
     }
