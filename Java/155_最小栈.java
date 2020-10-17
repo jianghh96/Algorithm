@@ -10,47 +10,33 @@
 // 借助辅助栈存放最小元素
 
 class MinStack {
-    
-    Stack<Integer> stack;
-    // 使用一个辅助栈！
-    Stack<Integer> stackhp;
-    
+    private Stack<Integer> stack;
+    private Stack<Integer> min;
     /** initialize your data structure here. */
     public MinStack() {
         stack = new Stack<>();
-        stackhp = new Stack<>();
+        min = new Stack<>();
     }
     
     public void push(int x) {
-        stack.add(x);
-        if(stackhp.isEmpty() || stackhp.peek() >= x){
-            stackhp.add(x);
-        }else{
-            stackhp.add(stackhp.peek());
-        }
+        stack.push(x);
+        if(min.isEmpty())
+            min.push(x);
+        else
+            min.push(Math.min(min.peek(), x));
     }
     
     public void pop() {
-        if(!stack.isEmpty()){
-            stack.pop();
-            stackhp.pop();
-        }
+        stack.pop();
+        min.pop();
     }
     
     public int top() {
-        if(!stack.isEmpty()){
-            return stack.peek();
-        }else{
-            return 0;
-        }
+        return stack.peek();
     }
     
     public int getMin() {
-        if(!stack.isEmpty()){
-            return stackhp.peek();
-        }else{
-            return 0;
-        }
+        return min.peek();
     }
 }
 
@@ -62,4 +48,3 @@ class MinStack {
  * int param_3 = obj.top();
  * int param_4 = obj.getMin();
  */
- 
