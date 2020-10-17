@@ -31,3 +31,20 @@ class Solution {
         return res;
     }
 }
+
+// 从前往后遍历
+
+class Solution {
+    public int[] dailyTemperatures(int[] T) {
+        if(T == null || T.length == 0) return T;
+        int len = T.length;
+        int[] res = new int[len];
+        Stack<Integer> stack = new Stack<>();
+        for(int i = 0; i < len; i++){
+            while(!stack.isEmpty() && T[i] > T[stack.peek()])
+                res[stack.peek()] = i - stack.pop();
+            stack.push(i);
+        }
+        return res;
+    }
+}
