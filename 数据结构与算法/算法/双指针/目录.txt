@@ -3,7 +3,9 @@
 18.四数之和 注意优化
 28.实现strStr() 
 88.合并两个有序数组
+151.翻转字符串里的单词 StringBuilder.append() string.trim().split(" ")
 167.两数之和II-输入有序数组 √
+344.反转字符串 √
 345.反转字符串中的元音字母
 524.通过删除字母匹配到字典里最长单词 字典序 string1.compareTo(string2)
 633.平方数之和
