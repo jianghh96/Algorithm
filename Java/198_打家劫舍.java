@@ -20,3 +20,19 @@ class Solution {
         return dp[n];
     }
 }
+
+// o(1) 空间
+
+class Solution {
+    public int rob(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        int pre1 = 0, pre2 = nums[0];
+        int res = pre2;
+        for(int i = 2; i <= nums.length; i++){
+            res = Math.max(pre2, pre1+nums[i-1]);
+            pre1 = pre2;
+            pre2 = res;
+        }
+        return res;
+    }
+}
