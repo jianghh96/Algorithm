@@ -6,32 +6,7 @@
 // 输出: 3 
 // 解释: 11 = 5 + 5 + 1
 
-// 解题思路：https://leetcode-cn.com/problems/coin-change/solution/322-ling-qian-dui-huan-by-leetcode-solution/
-
-// 动态规划-自上而下
-
-class Solution {
-    public int coinChange(int[] coins, int amount) {
-        if(amount < 1) return 0;
-        return coinCount(coins, amount, new int[amount]);
-    }
-    private int coinCount(int[] coins, int amount, int[] count){
-        if(amount < 0) return -1;
-        if(amount == 0) return 0;
-        if(count[amount-1] != 0) return count[amount-1];
-        int min = Integer.MAX_VALUE;
-        for(int coin : coins){
-            int res = coinCount(coins, amount - coin, count);
-            if(res >= 0 && res < min)
-                min = res + 1;
-        }
-        if(min == Integer.MAX_VALUE)
-            count[amount-1] = -1;
-        else
-            count[amount-1] = min;
-        return count[amount-1];
-    }
-}
+// 解题思路：https://leetcode-cn.com/problems/coin-change/solution/dong-tai-gui-hua-shi-yong-wan-quan-bei-bao-wen-ti-/
 
 // 动态规划：自下而上
 
@@ -49,5 +24,27 @@ class Solution {
             }
         }
         return dp[amount] > amount ? -1 : dp[amount];
+    }
+}
+
+// 完全背包问题
+
+class Solution {
+    public int coinChange(int[] coins, int amount) {
+        if(coins == null || coins.length == 0 || amount < 1) return 0;
+        int[] dp = new int[amount+1];
+        // 因为硬币可以重复使用，因此这是一个完全背包问题
+        // 完全背包只需要将 0-1 背包的逆序遍历 dp 数组改为正序遍历即可
+        for(int coin : coins){
+            for(int i = coin; i <= amount; i++){
+                if(i == coin)
+                    dp[i] = 1;
+                else if(dp[i] == 0 && dp[i-coin] != 0)
+                    dp[i] = dp[i-coin]+1;
+                else if(dp[i-coin] != 0)
+                    dp[i] = Math.min(dp[i], dp[i-coin]+1);
+            }
+        }
+        return dp[amount] == 0 ? -1 : dp[amount];
     }
 }
