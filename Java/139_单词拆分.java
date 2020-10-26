@@ -66,3 +66,21 @@ public class Solution {
         return dp[s.length()];
     }
 }
+
+// 完全背包问题
+
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        int len = s.length();
+        boolean[] dp = new boolean[len+1];
+        dp[0] = true;
+        for(int i = 1; i <= len; i++){
+            for(String str : wordDict){
+                int len_str = str.length();
+                if(len_str <= i && str.equals(s.substring(i-len_str, i)))
+                    dp[i] = dp[i] || dp[i-len_str];
+            }
+        }
+        return dp[len];
+    }
+}
