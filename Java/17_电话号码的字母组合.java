@@ -19,33 +19,29 @@
 
 class Solution {
     public List<String> letterCombinations(String digits) {
-        List<String> res = new ArrayList();
-        int n = digits.length();
-        if(digits == null || n == 0) return res;
-        if(n != 0)
-            backtrack(res, "", digits);
+        List<String> res = new ArrayList<>();
+        if(digits == null || digits.length() == 0) return res;
+        Map<Character, String> map = new HashMap<>();
+        map.put('2', "abc");
+        map.put('3', "def");
+        map.put('4', "ghi");
+        map.put('5', "jkl");
+        map.put('6', "mno");
+        map.put('7', "pqrs");
+        map.put('8', "tuv");
+        map.put('9', "wxyz");
+        trackbacking(res, "", digits, map);
         return res;
     }
-
-    public void backtrack(List<String> res, String condition, String next_digits){
-        Map<String, String> map = new HashMap<>();
-        map.put("2", "abc");
-        map.put("3", "def");
-        map.put("4", "ghi");
-        map.put("5", "jkl");
-        map.put("6", "mno");
-        map.put("7", "pqrs");
-        map.put("8", "tuv");
-        map.put("9", "wxyz");
-
-        if(next_digits.length() == 0){
-            res.add(condition);
-        }else{
-            String digit = next_digits.substring(0,1);
-            String letters = map.get(digit);
+    public void trackbacking(List<String> res, String cur, String digits, Map<Character, String> map){
+        if(digits.length() == 0)
+            res.add(cur);
+        else{
+            char c = digits.charAt(0);
+            String letters = map.get(c);
             for(int i = 0; i < letters.length(); i++){
                 String letter = letters.substring(i,i+1);
-                backtrack(res, condition + letter, next_digits.substring(1));
+                trackbacking(res, cur+letter, digits.substring(1), map);
             }
         }
     }
