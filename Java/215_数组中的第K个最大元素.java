@@ -17,9 +17,9 @@ class Solution {
         for(int i = k; i < l; i++){
             if(nums[i] > heap[0]){
                 heap[0] = nums[i];
-                int tmp = heap[0];
-                heap[0] = heap[k-1];
-                heap[k-1] = tmp;
+                //int tmp = heap[0];
+                //heap[0] = heap[k-1];
+                //heap[k-1] = tmp;
                 build_heap(heap);
             }
         }
