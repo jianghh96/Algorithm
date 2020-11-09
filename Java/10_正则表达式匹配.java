@@ -29,26 +29,30 @@ class Solution {
 
 
 // 方法 2：动态规划
-// 通过用dp(i,j) 表示 text[i:] 和 pattern[j:] 是否能匹配。我们可以用更短的字符串匹配问题来表示原本的问题。
-// 自底向上的方法
 
 class Solution {
-    public boolean isMatch(String text, String pattern) {
-        boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
-        dp[text.length()][pattern.length()] = true;
-
-        for (int i = text.length(); i >= 0; i--){
-            for (int j = pattern.length() - 1; j >= 0; j--){
-                boolean first_match = (i < text.length() &&
-                                       (pattern.charAt(j) == text.charAt(i) ||
-                                        pattern.charAt(j) == '.'));
-                if (j + 1 < pattern.length() && pattern.charAt(j+1) == '*'){
-                    dp[i][j] = dp[i][j+2] || first_match && dp[i+1][j];
-                } else {
-                    dp[i][j] = first_match && dp[i+1][j+1];
-                }
+    public boolean isMatch(String s, String p) {
+        int ls = s.length(), lp = p.length();
+        boolean[][] dp = new boolean[ls+1][lp+1];
+        dp[0][0] = true;
+        for(int j = 2; j <= lp; j++){
+            // 判断s为空，p非空
+            if(p.charAt(j-1) == '*')
+                dp[0][j] = dp[0][j-2];
+        }
+        for(int i = 1; i <= ls; i++){
+            for(int j = 1; j <= lp; j++){
+                if(s.charAt(i-1) == p.charAt(j-1) || p.charAt(j-1) == '.'){
+                    dp[i][j] = dp[i-1][j-1];
+                }else if(p.charAt(j-1) == '*'){
+                    if(s.charAt(i-1) != p.charAt(j-2) && p.charAt(j-2) != '.')
+                        dp[i][j] = dp[i][j-2];
+                    else
+                        dp[i][j] = dp[i][j-2] || dp[i][j-1] || dp[i-1][j];
+                }                   
             }
         }
-        return dp[0][0];
+        return dp[ls][lp];
     }
 }
+
