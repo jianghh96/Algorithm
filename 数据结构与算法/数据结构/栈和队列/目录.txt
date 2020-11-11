@@ -1,4 +1,6 @@
+leetcode:
 20.有效的括号 字符串
+71.简化路径 栈 Deque<> stack = new LinkedList<>();
 103.二叉树的锯齿形层次遍历
 155.最小栈 辅助栈 √
 225.用队列实现栈 单个队列 .add .poll 
