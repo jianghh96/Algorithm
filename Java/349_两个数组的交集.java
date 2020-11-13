@@ -14,6 +14,8 @@
 // 输出结果中的每个元素一定是唯一的。
 // 我们可以不考虑输出结果的顺序。
 
+// 哈希表
+
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
         Set<Integer> set1 = new HashSet<>();
@@ -32,4 +34,30 @@ class Solution {
         }
         return res;
     }
+}
+
+// 双指针
+
+public int[] intersection(int[] nums1, int[] nums2) {
+    Set<Integer> set = new HashSet<>();
+    Arrays.sort(nums1);
+    Arrays.sort(nums2);
+    int i = 0, j = 0;
+    while (i < nums1.length && j < nums2.length) {
+        if (nums1[i] == nums2[j]) {
+            set.add(nums1[i]);
+            i++;
+            j++;
+        } else if (nums1[i] < nums2[j]) {
+            i++;
+        } else if (nums1[i] > nums2[j]) {
+            j++;
+        }
+    }
+    int[] res = new int[set.size()];
+    int index = 0;
+    for (int num : set) {
+        res[index++] = num;
+    }
+    return res;
 }
