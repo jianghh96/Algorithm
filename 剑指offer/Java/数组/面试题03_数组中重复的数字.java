@@ -8,6 +8,8 @@
 // [2, 3, 1, 0, 2, 5, 3]
 // 输出：2 或 3 
 
+// 哈希表
+
 class Solution {
     public int findRepeatNumber(int[] nums) {
         Set<Integer> set = new HashSet<>();
@@ -15,6 +17,24 @@ class Solution {
             if(set.contains(num))
                 return num;
             set.add(num);
+        }
+        return -1;
+    }
+}
+
+// 交换 O(1)空间
+
+class Solution {
+    public int findRepeatNumber(int[] nums) {
+        int temp;
+        for(int i = 0; i < nums.length; i++){
+            while(i != nums[i]){
+                if(nums[i] == nums[nums[i]]) // 判断重复
+                    return nums[i];
+                temp = nums[i];
+                nums[i] = nums[temp];
+                nums[temp] = temp; 
+            }
         }
         return -1;
     }
