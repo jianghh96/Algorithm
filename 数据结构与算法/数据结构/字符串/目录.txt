@@ -19,3 +19,7 @@ leetcode:
 409.最长回文串 哈希表 map.getOrDefault(,) map.keySet() map.containsKey()
 647.回文子串个数 中心扩散思想
 696.计数二进制子串 
+
+剑指offer：
+05.替换空格 StringBuilder
+50.第一个只出现一次的字符 哈希表 √ 
