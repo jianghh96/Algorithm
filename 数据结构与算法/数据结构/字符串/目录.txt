@@ -23,3 +23,4 @@ leetcode:
 剑指offer：
 05.替换空格 StringBuilder
 50.第一个只出现一次的字符 哈希表 √ 
+67.把字符串转换成整数 与 leetcode 8 相同
