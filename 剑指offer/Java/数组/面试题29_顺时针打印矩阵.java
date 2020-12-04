@@ -42,3 +42,33 @@ class Solution {
         return res;
     }
 }
+
+
+class Solution {
+    public int[] spiralOrder(int[][] matrix) {
+        if(matrix == null || matrix.length == 0 || matrix[0].length == 0) return new int[0];
+        int rows = matrix.length, cols = matrix[0].length;
+        int[] res = new int[rows * cols];
+        int index = 0;
+        int top = 0, below = rows-1, left = 0, right = cols-1;
+        while(top <= below && left <= right){
+            for(int i = left; i <= right; i++)
+                res[index++] = matrix[top][i];
+            top++;
+            if(top > below) break;
+            for(int i = top; i <= below; i++)
+                res[index++] = matrix[i][right];
+            right--;
+            if(right < left) break;
+            for(int i = right; i >= left; i--)
+                res[index++] = matrix[below][i];
+            below--;
+            if(below < top) break;
+            for(int i = below; i >= top; i--)
+                res[index++] = matrix[i][left];
+            left++;
+            if(left > right) break;
+        }
+        return res; 
+    }
+}
