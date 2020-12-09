@@ -27,3 +27,33 @@ class Solution {
         return true;
     }
 }
+
+
+class Solution {
+    public boolean isNumber(String s) {
+        if(s == null || s.length() == 0) return false;
+        boolean haveNum = false;
+        boolean haveBot = false;
+        boolean haveE = false;
+        char[] charArr = s.trim().toCharArray();
+        for(int i = 0; i < charArr.length; i++){
+            if(charArr[i] >= '0' && charArr[i] <= '9')
+                haveNum = true;
+            else if(charArr[i] == '.'){
+                if(haveBot || haveE)
+                    return false;
+                haveBot = true;
+            }else if(charArr[i] == 'e' || charArr[i] == 'E'){
+                if(!haveNum || haveE)
+                    return false;
+                haveE = true;
+                haveNum = false;
+            }else if(charArr[i] == '+' || charArr[i] == '-'){
+                if(i != 0 && charArr[i-1] != 'e' && charArr[i-1] != 'E')
+                    return false;
+            }else
+                return false;
+        }
+        return haveNum;
+    }
+}
