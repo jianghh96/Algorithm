@@ -31,3 +31,24 @@ class Solution {
         return cur.val;
     }
 }
+
+
+class Solution {
+    int res, k;
+    public int kthSmallest(TreeNode root, int k) {
+        this.k = k;
+        dfs(root);
+        return res;
+    }
+    public void dfs(TreeNode root){
+        if(root == null)
+            return;
+        dfs(root.left);
+        if(k == 0)
+            return;
+        if(k == 1)
+            res = root.val;
+        k--;
+        dfs(root.right);
+    }
+}
