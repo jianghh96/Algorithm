@@ -25,3 +25,8 @@ DFS:
 37.解数独 hard
 51.N皇后 hard
 52.N皇后II hard
+
+剑指offer：
+12.矩阵中的路径 与leetcode 79相同
+13.机器人的运动范围
+38.字符串的排列
