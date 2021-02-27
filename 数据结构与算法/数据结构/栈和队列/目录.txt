@@ -9,7 +9,7 @@ leetcode:
 394.字符串解码 Integer.parseInt(char + "")
 496.下一个更大元素I 栈+哈希表
 503.下一个更大元素II 注意循环数组
-739.每日温度 √ 注意while而非if
+739.每日温度 √ 注意while而非if x2
 
 剑指offer：
 09.用两个栈实现队列 与leetcode 232相同 √
