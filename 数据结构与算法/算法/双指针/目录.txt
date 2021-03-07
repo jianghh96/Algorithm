@@ -1,5 +1,5 @@
 leetcode:
-15.三数之和 注意去重 Arrays.asList()
+15.三数之和 注意去重 Arrays.asList() x2
 16.最接近的三数之和 左右指针不同时移动
 18.四数之和 注意优化
 28.实现strStr() 
