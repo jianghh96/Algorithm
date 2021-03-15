@@ -1,5 +1,6 @@
 leetcode:
 20.有效的括号 x2 √
+32.最长有效括号 hard 栈 x2
 71.简化路径 栈 Deque<> stack = new LinkedList<>();
 103.二叉树的锯齿形层次遍历 x2
 155.最小栈 辅助栈 √ √
