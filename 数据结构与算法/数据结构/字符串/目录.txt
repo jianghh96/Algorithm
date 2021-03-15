@@ -11,7 +11,6 @@ leetcode:
 17.电话号码的字母组合 回溯
 20.有效的括号 √ 栈 注意false条件
 22.括号生成 动态规划 注意DFS
-32.最长有效括号 hard 栈
 49.字母异位词分组 字符数组排序+哈希表 数组排序：Arrays.sort() 字符数组合并为字符串：String.valueOf() 哈希表的所有value：map.values()
 72.编辑距离 动态规划
 151.翻转字符串里的单词 StringBuffer.append() string.trim().split(" ") x2
